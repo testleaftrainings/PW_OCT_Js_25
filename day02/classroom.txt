@@ -1,0 +1,8 @@
+If - esle
+let value =101
+if  value< 100 -> lower version
+else -if value > 100 -> higher version
+esle -> no version
+
+for loop 
+print odd number 1 to 35
