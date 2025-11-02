@@ -1,0 +1,55 @@
+Week4.day1
+
+-> Type Script
+-> Break
+-> Breakout
+-> Arrays
+-> Breakout
+-> Alert
+
+
+Union & Intersection Types in TypeScript:
+
+Union -> OR
+Intersection -> AND
+
+let status=string|number 
+status=200
+status="created"
+
+
+
+Arrays:
+1. PrintDuplicate [56,78,90,23,90,76,43,56]
+2. data ["chrome",true,132.8]
+add index 5 -> webkit
+use push -> firefox
+use shift
+use for..of to print value
+
+
+
+
+
+Alert:
+Popup message
+Error Message
+Warning Message
+
+*We cannot ingore alert
+
+Modal alert:
+simple alert -> can only one action OK
+confirmation alert -> two action (OK, Cancel)
+prompt alert -> input box, (OK, Cancel)
+
+
+
+Page.once 
+  url :https://www.leafground.com/alert.xhtml
+  click on Show button in confirmationalert
+  accept
+  click on Show button in prompt alert
+ 
+
+
