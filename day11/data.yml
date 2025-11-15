@@ -1,0 +1,7 @@
+https://dev354719.service-now.com/
+username: admin
+password: tj6Z5^xHfIH+
+
+
+https://dev354719.service-now.com/api/now/table/{tableName}
+uri : https://dev354719.service-now.com/api/now/table/incident
