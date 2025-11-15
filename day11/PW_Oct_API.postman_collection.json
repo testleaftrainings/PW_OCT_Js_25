@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "74c34af0-f8cd-412a-8f6b-7b52311adce7",
+		"name": "PW_Oct_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34817915"
+	},
+	"item": [
+		{
+			"name": "CreateIncident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var value=pm.response.json()\r",
+							"var Sys_id=value.result.sys_id\r",
+							"//global\r",
+							"//pm.globals.set(\"sys\",Sys_id)\r",
+							"\r",
+							"//collection level variable\r",
+							"//pm.collectionVariables.set(\"coll_sys\",Sys_id)\r",
+							"\r",
+							"//env \r",
+							"pm.environment.set(\"QA_Sys_id\",Sys_id)\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "tj6Z5^xHfIH+",
+						"username": "admin"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Learn API\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dev354719.service-now.com/api/now/table/incident"
+			},
+			"response": []
+		},
+		{
+			"name": "GetIncident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "tj6Z5^xHfIH+",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "https://dev354719.service-now.com/api/now/table/incident/{{QA_Sys_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeInfo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "tj6Z5^xHfIH+",
+						"username": "admin"
+					}
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\":\"Update the request by Patch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dev354719.service-now.com/api/now/table/incident/62844f10931dfe10af6afd10ed03d6ea"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteIncident",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "tj6Z5^xHfIH+",
+						"username": "admin"
+					}
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "https://dev354719.service-now.com/api/now/table/incident/62844f10931dfe10af6afd10ed03d6ea"
+			},
+			"response": []
+		},
+		{
+			"name": "QueryParam",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "tj6Z5^xHfIH+",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dev354719.service-now.com/api/now/table/incident/cdf413dc939dfe10af6afd10ed03d6e9?sysparm_fields=short_description%2Csys_id",
+					"protocol": "https",
+					"host": [
+						"dev354719",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"cdf413dc939dfe10af6afd10ed03d6e9"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "short_description%2Csys_id"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "coll_sys",
+			"value": ""
+		}
+	]
+}
