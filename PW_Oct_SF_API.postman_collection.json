@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "21716e99-60ca-4fb8-a519-756e0a9ab2d5",
+		"name": "PW_Oct_SF_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34817915"
+	},
+	"item": [
+		{
+			"name": "CreateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var res=pm.response.json()\r",
+							"var inst_url=res.instance_url\r",
+							"console.log(inst_url)\r",
+							"\r",
+							"var token=res.access_token\r",
+							"console.log(token)\r",
+							"\r",
+							"pm.collectionVariables.set(\"instance_url\",inst_url)\r",
+							"pm.collectionVariables.set(\"token_type\",token)"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "gauthami.vn@testleaf.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Qeagle@2025",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "3MVG9rZjd7MXFdLhTFd7jYNtTiu5DzDqdNCte5DvFnv7tbIspjQ9CGPizYGUq7h6T69VSmfqxT9yY2NS7tz84",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "09FE1EF4BDD93B17821073243A441F8A780A639C21D925B575C1112A3F5E0DBE",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://login.salesforce.com/services/oauth2/token"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateLead",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token_type}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"Dilip\",\r\n    \"lastname\":\"kumar\",\r\n    \"company\":\"TestLeaf\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{instance_url}}/services/data/v64.0/sobjects/Lead"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "instance_url",
+			"value": ""
+		},
+		{
+			"key": "token_type",
+			"value": ""
+		}
+	]
+}
